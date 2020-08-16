@@ -1,0 +1,23 @@
+name: Publish on DockerHub
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  clang-format:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Build and push Dockerfile
+        uses: docker/build-push-action@v1
+        with:
+          dockerfile: clang-format.Dockerfile
+          repository: ggabriel96/clang-format
+          tags: latest
+          tag_with_sha: true
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
