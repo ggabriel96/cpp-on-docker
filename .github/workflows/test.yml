@@ -1,0 +1,15 @@
+name: Test
+
+on:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  clang-format:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Build clang-format image
+        run: docker build . --file clang-format.Dockerfile --tag clang-format:latest
