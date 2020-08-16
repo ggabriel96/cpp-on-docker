@@ -1,5 +1,4 @@
 FROM alpine:3
-
 LABEL maintainer="Gabriel Galli (ggabriel96@hotmail.com)"
 
 RUN apk update \
